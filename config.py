@@ -1,5 +1,5 @@
 # Создаём класс для конфигурации приложения Flask
-class CONFIG:
+class FlaskConfig:
     JSON_AS_ASCII = False
     POSTS_PATH = "/data/posts.json"
     COMMENTS_PATH = "/data/comments.json"

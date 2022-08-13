@@ -2,8 +2,8 @@
 from flask import Flask
 
 # Подключаем конфигурационный класс
-from config import CONFIG
+from config import FlaskConfig
 
 # Создаём наше приложение
 app = Flask(__name__)
-app.config.from_object(CONFIG)
+app.config.from_object(FlaskConfig)
