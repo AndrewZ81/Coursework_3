@@ -2,8 +2,11 @@ from flask import Flask  # Подключаем необходимые инст�
 from config import FlaskConfig  # Подключаем конфигурационный класс
 from app.main.all_posts_views import all_posts_blueprint  # Подключаем блюпринт для вывода ленты
 from app.post.post_view import post_with_comments_blueprint  # Подключаем блюпринт для вывода поста с комментариями
-from app.search.search_view import posts_by_keyword_blueprint  # Подключаем блюпринт для вывода выбранных постов по ключу
-from app.user.user_view import user_posts_blueprint # Подключаем блюпринт для вывода постов данного пользователя
+# Подключаем блюпринт для вывода выбранных постов по ключу
+from app.search.search_view import posts_by_keyword_blueprint
+from app.user.user_view import user_posts_blueprint  # Подключаем блюпринт для вывода постов данного пользователя
+from app.other.api_all_posts_view import api_all_posts_blueprint  # Подключаем блюпринт для вывода постов в формате json
+from app.other.api_post_view import api_post_by_id_blueprint  # Подключаем блюпринт для вывода поста в формате json
 
 app = Flask(__name__)  # Создаём наше приложение
 app.config.from_object(FlaskConfig)  # Подключаем для доступа к конфигурационным константам
@@ -13,6 +16,8 @@ app.register_blueprint(all_posts_blueprint)
 app.register_blueprint(post_with_comments_blueprint)
 app.register_blueprint(posts_by_keyword_blueprint)
 app.register_blueprint(user_posts_blueprint)
+app.register_blueprint(api_all_posts_blueprint)
+app.register_blueprint(api_post_by_id_blueprint)
 
 
 # Добавляем обработчики ошибок
