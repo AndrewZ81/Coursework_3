@@ -56,6 +56,7 @@ class PostDAO:  # Создаём DAO для выборки конкретног�
             if i["pk"] == post_id:
                 post_with_comments.append(i)
                 break
+        # Обрабатываем ошибку, когда пост с данным идентификатором не существует
         try:
             if not len(post_with_comments):
                 raise ValueError
@@ -64,6 +65,6 @@ class PostDAO:  # Создаём DAO для выборки конкретног�
                     if i["post_id"] == post_id:
                         post_with_comments.append(i)
         except ValueError:
-            return "Поста с таким идентификаторм нет"
+            raise
         else:
             return post_with_comments

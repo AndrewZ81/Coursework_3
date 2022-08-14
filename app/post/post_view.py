@@ -15,7 +15,5 @@ def show_post_with_comments(post_id):
     :return: Заполненный шаблон поста с комментариями
     """
     _post_with_comments = post_with_comments.load_post_with_comments(post_id)
-    if type(_post_with_comments) == str:
-       return f"<h3>Нет поста с таким идентификатором</h3>"
     comments_count = len(_post_with_comments) - 1
     return render_template("post.html", posts=_post_with_comments, count=comments_count)

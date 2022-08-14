@@ -10,5 +10,9 @@ app.config.from_object(FlaskConfig)  # Подключаем для доступ�
 app.register_blueprint(all_posts_blueprint)
 app.register_blueprint(post_with_comments_blueprint)
 
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    return "Похоже, поста с таким идентификатором нет", 500
 if __name__ == "__main__":
     app.run()
