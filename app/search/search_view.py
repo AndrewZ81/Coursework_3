@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request  # Подключаем для создания блюпринтов на основе шаблонов
 from .dao.search_dao import SearchDAO  # Подключаем для выборки постов по ключевому слову
 from config import FlaskConfig  # Подключаем для доступа к конфигурационным константам
-import logging # Подключаем инструменты логирования
+import logging  # Подключаем инструменты логирования
 
 posts_by_keyword = SearchDAO(FlaskConfig.POSTS_PATH)  # Создаём объект класса
 
