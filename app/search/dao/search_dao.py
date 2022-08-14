@@ -3,7 +3,7 @@ import json
 from json import JSONDecodeError
 
 
-class AllPostsDAO:  # Создаём DAO для выборки всех постов
+class SearchDAO:  # Создаём DAO для выборки постов по ключевому слову
 
     def __init__(self, path):
         """
@@ -27,3 +27,18 @@ class AllPostsDAO:  # Создаём DAO для выборки всех пост
         else:
             file.close()
             return all_posts
+
+    def load_posts_by_keyword(self, keyword):
+        """
+        Загружает выборку постов по ключевому слову
+        :param keyword: Ключевое слово для поиска в постах
+        :return: Выборку постов по ключевому слову в формате списка
+        """
+        posts_by_keyword = []
+        for i in self.load_all_posts():
+            if len(posts_by_keyword) == 10:
+                break
+            else:
+                if keyword.lower() in i["content"].lower():
+                    posts_by_keyword.append(i)
+        return posts_by_keyword

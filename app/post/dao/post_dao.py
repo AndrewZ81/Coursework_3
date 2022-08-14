@@ -23,9 +23,9 @@ class PostDAO:  # Создаём DAO для выборки конкретног�
             file = open(self.posts_path, encoding="utf-8")
             all_posts = json.load(file)
         except FileNotFoundError:
-            quit(f"Файл {self.posts_path} с постами для загрузки не найден")
+            raise FileNotFoundError(f"Файл {self.posts_path} с постами для загрузки не найден")
         except JSONDecodeError:
-            quit(f"Файл {self.posts_path} с постами для загрузки не удалось считать")
+            raise ValueError(f"Файл {self.posts_path} с постами для загрузки не удалось считать")
         else:
             file.close()
             return all_posts
@@ -39,9 +39,9 @@ class PostDAO:  # Создаём DAO для выборки конкретног�
             file = open(self.comments_path, encoding="utf-8")
             all_comments = json.load(file)
         except FileNotFoundError:
-            quit(f"Файл {self.comments_path} с комментариями для загрузки не найден")
+            raise FileNotFoundError(f"Файл {self.comments_path} с комментариями для загрузки не найден")
         except JSONDecodeError:
-            quit(f"Файл {self.comments_path} с комментариями для загрузки не удалось считать")
+            raise ValueError(f"Файл {self.comments_path} с комментариями для загрузки не удалось считать")
         else:
             file.close()
             return all_comments
