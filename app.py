@@ -8,7 +8,7 @@ from app.search.search_view import posts_by_keyword_blueprint # Для выво�
 from app.user.user_view import user_posts_blueprint  # Для вывода постов данного пользователя
 from app.other.api_all_posts_view import api_all_posts_blueprint  # Для вывода постов в формате json
 from app.other.api_post_view import api_post_by_id_blueprint  # Для вывода поста в формате json
-from app.bookmarks.bookmarks_view import all_bookmarks_blueprint # Для вывода закладок
+from app.bookmarks.bookmarks_view import bookmarks_blueprint # Для работы с закладками
 
 app = Flask(__name__)  # Создаём наше приложение
 app.config.from_object(FlaskConfig)  # Подключаем для доступа к конфигурационным константам
@@ -20,7 +20,7 @@ app.register_blueprint(posts_by_keyword_blueprint)
 app.register_blueprint(user_posts_blueprint)
 app.register_blueprint(api_all_posts_blueprint)
 app.register_blueprint(api_post_by_id_blueprint)
-app.register_blueprint(all_bookmarks_blueprint)
+app.register_blueprint(bookmarks_blueprint)
 
 
 # Добавляем обработчики ошибок

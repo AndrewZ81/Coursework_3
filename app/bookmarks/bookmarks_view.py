@@ -2,17 +2,17 @@ from flask import Blueprint, render_template  # Подключаем для со
 from .dao.bookmarks_dao import BookmarksDAO  # Подключаем для выборки закладок
 from config import FlaskConfig  # Подключаем для доступа к конфигурационным константам
 
-all_bookmarks = BookmarksDAO(FlaskConfig.BOOKMARKS_PATH)  # Создаём объект класса
+bookmarks = BookmarksDAO(FlaskConfig.BOOKMARKS_PATH)  # Создаём объект класса
 
-# Создаём блюпринт страницы закладок
-all_bookmarks_blueprint = Blueprint("all_bookmarks_blueprint", __name__)
+# Создаём блюпринт для работы с закладками
+bookmarks_blueprint = Blueprint("bookmarks_blueprint", __name__, url_prefix="/bookmarks")
 
 
-@all_bookmarks_blueprint.route("/bookmarks")
+@bookmarks_blueprint.route("/")
 def show_all_bookmarks():
     """
-    Создаёт эндпоинт для закладок
+    Создаёт эндпоинт для отображения закладок
     :return: Заполненный шаблон закладок
     """
-    _all_bookmarks = all_bookmarks.load_all_bookmarks()
-    return render_template("bookmarks.html", bookmarks=_all_bookmarks)
+    all_bookmarks = bookmarks.load_all_bookmarks()
+    return render_template("bookmarks.html", bookmarks=all_bookmarks)
