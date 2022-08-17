@@ -75,7 +75,24 @@ class BookmarksDAO:  # Создаём DAO для работы с закладк�
         """
         bookmarks = self.load_all_bookmarks()
         new_bookmark = self.load_post_by_id(post_id)
-        if new_bookmark not in bookmarks:
-            bookmarks.append(new_bookmark)
-            file = open(self.bookmarks_path, "w", encoding="utf-8")
-            return json.dump(bookmarks, file, indent=2, ensure_ascii=False)
+        for i in bookmarks:
+            if new_bookmark["pk"] == i["pk"]:
+                return
+        bookmarks.append(new_bookmark)
+        file = open(self.bookmarks_path, "w", encoding="utf-8")
+        return json.dump(bookmarks, file, indent=2, ensure_ascii=False)
+
+    def remove_bookmark(self, post_id):
+        """
+        Удаляет пост из закладок
+        :param post_id: Идентификатор поста для удаления из закладок
+        :return: Сохраненный файл с закладками формата JSON после удаления закладки
+        """
+        bookmarks = self.load_all_bookmarks()
+        trash_bookmark = self.load_post_by_id(post_id)
+        for i in bookmarks:
+            if trash_bookmark["pk"] == i["pk"]:
+                bookmarks.remove(trash_bookmark)
+                file = open(self.bookmarks_path, "w", encoding="utf-8")
+                return json.dump(bookmarks, file, indent=2, ensure_ascii=False)
+        return

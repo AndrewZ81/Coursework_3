@@ -26,3 +26,13 @@ def add_bookmark(post_id):
     """
     bookmark.add_bookmark(post_id)
     return redirect("/", code=302)
+
+
+@bookmarks_blueprint.route("/remove/<int:post_id>")
+def remove_bookmark(post_id):
+    """
+    Создаёт эндпоинт для добавления закладки
+    :return:
+    """
+    bookmark.remove_bookmark(post_id)
+    return redirect("/", code=302)
