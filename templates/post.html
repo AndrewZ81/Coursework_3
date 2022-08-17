@@ -35,9 +35,11 @@
             </div>
             <span class="item__username">{{posts[0]["poster_name"]}}</span>
           </a>
-          <button type="button" class="item__bookmark-btn">
+          <form action="/bookmarks/add/{{posts[0]['pk']}}">
+            <button type="submit" class="item__bookmark-btn">
             <img src="/static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
-          </button>
+            </button>
+          </form>
         </div>
         <a href="" class="item__post-link">
           <img src={{posts[0]["pic"]}} alt="" width="348" class="item__post-img">
