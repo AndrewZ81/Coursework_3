@@ -20,6 +20,6 @@ def show_posts_by_keyword():
                f"Вернитесь на главную и попробуйте снова</h3>" \
                f"<a href='/'>На главную</a>"
     else:
-        _posts_by_keyword = posts_by_keyword.load_posts_by_keyword(key_for_search)
+        _posts_by_keyword = posts_by_keyword.load_posts_by_keyword_with_tags(key_for_search)
         posts_count = len(_posts_by_keyword)
         return render_template("search.html", posts=_posts_by_keyword, count=posts_count)

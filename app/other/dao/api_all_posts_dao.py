@@ -3,6 +3,7 @@ import json
 from json import JSONDecodeError
 from app.other.loggers import info_logger  # Подключаем логгер
 
+
 class APIAllPostsDAO:  # Создаём DAO для выборки всех постов
 
     def __init__(self, path):

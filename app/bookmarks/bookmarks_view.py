@@ -14,7 +14,7 @@ def show_all_bookmarks():
     Создаёт эндпоинт для отображения закладок
     :return: Заполненный шаблон закладок
     """
-    all_bookmarks = bookmark.load_all_bookmarks()
+    all_bookmarks = bookmark.load_all_bookmarks_with_tags()
     return render_template("bookmarks.html", bookmarks=all_bookmarks)
 
 
