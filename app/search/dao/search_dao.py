@@ -68,7 +68,6 @@ class SearchDAO:  # Создаём DAO для выборки постов по �
                             if post_content_as_list[k].startswith("#"):
                                 old_value = post_content_as_list[k]
                                 post_content_as_list[k] = f"<a href='/tag/{old_value[1:]}'>{old_value}</a>"
-                                post_content_as_str = " ".join(post_content_as_list)
-                        i["content"] = post_content_as_str
+                        i["content"] = " ".join(post_content_as_list)
                         posts_by_keyword.append(i)
             return posts_by_keyword

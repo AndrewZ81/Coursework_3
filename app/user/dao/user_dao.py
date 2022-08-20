@@ -26,15 +26,15 @@ class UserDAO:  # Создаём DAO для выборки постов данн
             raise ValueError(f"Файл {self.path} с постами для загрузки не удалось считать")
         else:
             file.close()
-        for i in all_posts:
-            post_content_as_list = i["content"].split(" ")
-            for k in range(len(post_content_as_list)):
-                if post_content_as_list[k].startswith("#"):
-                    old_value = post_content_as_list[k]
-                    post_content_as_list[k] = f"<a href='/tag/{old_value[1:]}'>{old_value}</a>"
-            post_content_as_str = " ".join(post_content_as_list)
-            i["content"] = post_content_as_str
-        return all_posts
+            for i in all_posts:
+                post_content_as_list = i["content"].split(" ")
+                for k in range(len(post_content_as_list)):
+                    if post_content_as_list[k].startswith("#"):
+                        old_value = post_content_as_list[k]
+                        post_content_as_list[k] = f"<a href='/tag/{old_value[1:]}'>{old_value}</a>"
+                post_content_as_str = " ".join(post_content_as_list)
+                i["content"] = post_content_as_str
+            return all_posts
 
     def load_posts_by_user(self, name):
         """
